@@ -24,9 +24,10 @@ Installation
 - sudo pip install -r pythonrequirements.txt
 - stop SickBeard
 - Open /path/to/your/SickBeard/installation/config.ini
-- Locate the `extra_scripts` line and configure it like this: ::
+- Locate the extra_scripts line and configure it like this: ::
 
     extra_scripts = /absolute/path/to/python /absolute/path/to/fetchsubtitles.py fr
+
 - Start SickBeard
 
 That should be it.
