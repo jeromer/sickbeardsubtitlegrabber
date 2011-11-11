@@ -1,0 +1,34 @@
+Subtitle grabber for SickBeard
+==============================
+
+Use case
+--------
+
+You use SickBeard [http://sickbeard.com/] but you need subtitle support because
+SickBeard only download english episodes and your girlfriend is not that
+comfortable with English.
+
+Requirements
+------------
+
+A working SickBeard installation.
+Pip : sudo apt-get install python-pip on Debian
+PYTHONPATH containing the absolute pat to SickBeard. For instance if SickBeard
+is installed in /home/foo/SickBeard, echo $PYTHONPATH should show that path. If
+not just run export PYTHONPATH=/home/foo/SickBeard:$PYTHONPATH
+
+Installation
+------------
+
+- Clone this repository on your system.
+- sudo pip install -r pythonrequirements.txt
+- stop SickBeard
+- Open /path/to/your/SickBeard/installation/config.ini
+- Locate the `extra_scripts` line and configure it like this: ::
+
+    extra_scripts = /absolute/path/to/python /absolute/path/to/fetchsubtitles.py fr
+- Start SickBeard
+
+That should be it.
+
+Only french subtitles are supported for now.
