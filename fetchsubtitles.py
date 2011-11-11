@@ -124,7 +124,6 @@ class subTitleGrabber:
         conn = httplib.HTTPConnection(self.hostName)
         conn.request(method, page, params, self.__HTTPHeaders)
         response = conn.getresponse()
-        print("http://%s%s" % (self.hostName, page))
         return response
 
 # Launch with python fr ./fetchsubtitles.py ./Bones.7x01.The.Memories.in.the.Shallow.Grave.avi
