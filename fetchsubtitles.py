@@ -69,6 +69,11 @@ class subTitleGrabber:
 
         soup = BeautifulSoup(data)
         base = soup.find('td', text="%sx%s" % (self.__seasonNb, episodeNb))
+
+        if base is None:
+            print("No subtitle found for this episode")
+            return
+
         downloadPage = base.parent.findNextSibling('td').a['href']
 
         response = self._sendHTTPRequest("GET", "/%s" % (downloadPage))
