@@ -17,6 +17,14 @@ PYTHONPATH containing the absolute pat to SickBeard. For instance if SickBeard
 is installed in /home/foo/SickBeard, echo $PYTHONPATH should show that path. If
 not just run export PYTHONPATH=/home/foo/SickBeard:$PYTHONPATH
 
+.. Note:::
+
+    Exporting PYTHONPATH did not work for me, I had to force the path directly
+    from the python code. If you need to force it too, simply change the
+    following line in fetchsubtitles.py and adapt the path to your system:
+
+        sys.path.append('/home/jerome/Sick-Beard')
+
 Installation
 ------------
 
