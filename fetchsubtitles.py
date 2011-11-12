@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+sys.path.append('/home/jerome/Sick-Beard')
 import os
 from sickbeard.name_parser import parser
 import httplib
