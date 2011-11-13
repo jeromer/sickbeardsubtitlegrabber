@@ -34,10 +34,63 @@ Installation
 - Open /path/to/your/SickBeard/installation/config.ini
 - Locate the extra_scripts line and configure it like this: ::
 
-    extra_scripts = /absolute/path/to/python /absolute/path/to/fetchsubtitles.py fr
+    extra_scripts = /absolute/path/to/python /absolute/path/to/fetchsubtitles.py LANGUAGE
 
 - Start SickBeard
 
-That should be it.
 
-Only french subtitles are supported for now.
+The LANGUAGE string may be one of the possibilities below:
+
++---------------+----------------+
+| Language code | Name           |
++---------------+----------------+
+| en            | english        |
++---------------+----------------+
+| es            | spanish        |
++---------------+----------------+
+| fr            | french         |
++---------------+----------------+
+| de            | german         |
++---------------+----------------+
+| br            | portuguese(br) |
++---------------+----------------+
+| ru            | russian        |
++---------------+----------------+
+| ua            | ukrainian      |
++---------------+----------------+
+| it            | italian        |
++---------------+----------------+
+| gr            | greek          |
++---------------+----------------+
+| ar            | arabic         |
++---------------+----------------+
+| hu            | hungarian      |
++---------------+----------------+
+| pl            | polish         |
++---------------+----------------+
+| tr            | turkish        |
++---------------+----------------+
+| nl            | dutch          |
++---------------+----------------+
+| pt            | portuguese     |
++---------------+----------------+
+| sv            | swedish        |
++---------------+----------------+
+| da            | danish         |
++---------------+----------------+
+| fi            | finnish        |
++---------------+----------------+
+| ko            | korean         |
++---------------+----------------+
+| cn            | chinese        |
++---------------+----------------+
+| jp            | japanese       |
++---------------+----------------+
+| bg            | bulgarian      |
++---------------+----------------+
+| cz            | czech          |
++---------------+----------------+
+| ro            | romanian       |
++---------------+----------------+
+
+That should be it.
