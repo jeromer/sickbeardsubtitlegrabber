@@ -92,7 +92,7 @@ class subTitleGrabber:
         if response.status == 302:
             for header in response.getheaders():
                 if header[0] == 'location':
-                    downloadableArchive = (header[1])
+                    downloadableArchive = urllib.quote(header[1])
                     break
 
         if downloadableArchive is False:
@@ -100,7 +100,6 @@ class subTitleGrabber:
 
         print("Downloading http://%s/%s" % (self.hostName, downloadableArchive))
             
-
         response = self._sendHTTPRequest("GET", "/"+downloadableArchive)
         data = response.read()
 
@@ -113,7 +112,6 @@ class subTitleGrabber:
             self.extractArchive(archiveName)
         except BadZipfile:
             print("Impossible to extract the archive : not a ZIP File")
-                
         finally:
             os.remove(archiveName)
 
