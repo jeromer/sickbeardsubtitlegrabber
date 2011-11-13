@@ -103,7 +103,7 @@ class subTitleGrabber:
         response = self._sendHTTPRequest("GET", "/"+downloadableArchive)
         data = response.read()
 
-        archiveName = (os.path.basename(downloadableArchive))
+        archiveName = os.path.basename(downloadableArchive)
         fd = open(archiveName, 'wb')
         fd.write(data)
         fd.close()
