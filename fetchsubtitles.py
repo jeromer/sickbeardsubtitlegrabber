@@ -83,7 +83,9 @@ class subTitleGrabber:
         # What a pain !!
         soup = BeautifulSoup(response.read())
         div = soup.find('div', {'class': 'left_articles'})
-        subtitleLink = div.find('a', {'href':re.compile('/subtitle-([\d]+).html')})
+        subtitleLinks = div.findAll('a', {'href':re.compile('/subtitle-([\d]+).html')})
+
+        subtitleLink = self.findBestRated(subtitleLinks)
         downloadLink = subtitleLink['href'].replace('subtitle', 'download')
 
         response = self._sendHTTPRequest("GET", downloadLink)
@@ -99,7 +101,7 @@ class subTitleGrabber:
             raise InvalidURL('No downloadable archive found')
 
         print("Downloading http://%s/%s" % (self.hostName, downloadableArchive))
-            
+
         response = self._sendHTTPRequest("GET", "/"+downloadableArchive)
         data = response.read()
 
@@ -124,6 +126,23 @@ class subTitleGrabber:
                 zip.extract(archiveMember)
                 os.rename(archiveMember.filename, targetName)
                 break
+
+    def findBestRated(self, subtitleList):
+        rating = 0
+        bestSubtitle = None
+        for subtitle in subtitleList:
+            bad = float(subtitle.find('span', {'style':'color:red'}).string)
+            good = float(subtitle.find('span', {'style':'color:green'}).string)
+            downloadCount = int(
+                subtitle.find('p', {'title':'downloaded'}).contents[1].strip())
+
+            # not sure the formula is the good one
+            current = ((bad/good + downloadCount * 2)/3)
+            if current > rating:
+                rating = current
+                bestSubtitle = subtitle
+
+        return bestSubtitle
 
     def _sendHTTPRequest(self, method, page, params=''):
         conn = httplib.HTTPConnection(self.hostName)
