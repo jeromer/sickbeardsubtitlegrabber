@@ -142,10 +142,15 @@ class subTitleGrabber:
                 subtitle.find('p', {'title':'downloaded'}).contents[1].strip())
 
             # not sure the formula is the good one
-            current = ((bad/good + downloadCount * 2)/3)
-            if current > rating:
-                rating = current
-                bestSubtitle = subtitle
+            try:
+                current = ((bad/good + downloadCount * 2)/3)
+            except ZeroDivisionError:
+                current = downloadCount
+            finally:
+                if current > rating:
+                    rating = current
+                    bestSubtitle = subtitle
+
 
         return bestSubtitle
 
