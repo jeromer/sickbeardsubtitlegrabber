@@ -86,6 +86,11 @@ class subTitleGrabber:
         subtitleLinks = div.findAll('a', {'href':re.compile('/subtitle-([\d]+).html')})
 
         subtitleLink = self.findBestRated(subtitleLinks)
+
+        if subtitleLink is None:
+            print("No subtitle link found")
+            return False
+
         downloadLink = subtitleLink['href'].replace('subtitle', 'download')
 
         response = self._sendHTTPRequest("GET", downloadLink)
