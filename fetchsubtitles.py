@@ -153,7 +153,7 @@ class subTitleGrabber:
 
             # not sure the formula is the good one
             try:
-                current = ((bad/good + (downloadCount * 2) + (DVDRip * 3) )/4)
+                current = ((bad/good + (downloadCount * 2) + (DVDRip * 3) )/5)
             except ZeroDivisionError:
                 current = ((downloadCount * 2) + (DVDRip * 3) /5)
             finally:
