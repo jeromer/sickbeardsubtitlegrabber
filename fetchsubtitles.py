@@ -136,6 +136,16 @@ class subTitleGrabber:
         rating = 0
         bestSubtitle = None
         for subtitle in subtitleList:
+            subtitleName = subtitle.find(
+                'h5', {'style':'width:600px;'}).contents[1]
+
+            patternMatch = re.search("dvd", subtitleName, re.IGNORECASE)
+
+            DVDRip = 0
+            if patternMatch is not None:
+                #  we really prefer the DVDRip version
+                DVDRip = 5000
+
             bad = float(subtitle.find('span', {'style':'color:red'}).string)
             good = float(subtitle.find('span', {'style':'color:green'}).string)
             downloadCount = int(
@@ -143,7 +153,7 @@ class subTitleGrabber:
 
             # not sure the formula is the good one
             try:
-                current = ((bad/good + downloadCount * 2)/3)
+                current = ((bad/good + (downloadCount * 2) + (DVDRip * 3) )/4)
             except ZeroDivisionError:
                 current = downloadCount
             finally:
