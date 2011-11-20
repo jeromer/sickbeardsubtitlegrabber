@@ -155,7 +155,7 @@ class subTitleGrabber:
             try:
                 current = ((bad/good + (downloadCount * 2) + (DVDRip * 3) )/4)
             except ZeroDivisionError:
-                current = downloadCount
+                current = ((downloadCount * 2) + (DVDRip * 3) /5)
             finally:
                 if current > rating:
                     rating = current
